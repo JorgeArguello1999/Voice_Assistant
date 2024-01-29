@@ -1,17 +1,7 @@
 import speech_recognition as sr
-from plyer import notification
 import requests, pygame, os
 
 from configs.configs import obtener_url_desde_config
-
-# Notificar lo que detecto
-def notificacion(titulo:str, mensaje:str):
-    notification.notify(
-        title=titulo,
-        message=mensaje,
-        app_name='Bot',  
-        timeout=10  
-    )
 
 # Función para grabar audio desde el micrófono y realizar reconocimiento de voz
 def reconocer_voz():
@@ -26,7 +16,7 @@ def reconocer_voz():
 
         # Usar reconocimiento de voz de Google
         texto = recognizer.recognize_google(audio, language='es-ES')
-        notificacion(titulo="Bot", mensaje=f"{texto}")
+        print(titulo="Bot", mensaje=f"{texto}")
 
         return texto
 

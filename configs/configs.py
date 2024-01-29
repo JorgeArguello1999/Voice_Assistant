@@ -17,4 +17,8 @@ def obtener_url_desde_config():
     except FileNotFoundError:
         print("El archivo de configuración no existe")
         return None
+    
+    except Exception as e:
+        print("Error: ", e)
+        return None
 
