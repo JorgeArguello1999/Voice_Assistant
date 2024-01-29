@@ -1,10 +1,5 @@
-certifi==2023.11.17
-charset-normalizer==3.3.2
-idna==3.6
 plyer==2.1.0
 PyAudio==0.2.14
 pygame==2.5.2
-python-dotenv==1.0.1
 requests==2.31.0
 SpeechRecognition==3.10.0
-urllib3==2.1.0
