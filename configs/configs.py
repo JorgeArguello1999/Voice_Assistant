@@ -3,7 +3,7 @@ import json
 # Leemos el Archivo config.txt
 def obtener_url_desde_config():
     try:
-        with open("config.json", "r") as archivo_config:
+        with open("./configs/config.json", "r") as archivo_config:
             config_data = json.load(archivo_config)
             if 'url' in config_data:
                 return {
@@ -22,3 +22,6 @@ def obtener_url_desde_config():
         print("Error: ", e)
         return None
 
+if __name__ == '__main__':
+    response = obtener_url_desde_config()
+    print(response)

@@ -1,46 +1,9 @@
-import speech_recognition as sr
-import requests, pygame, os
+import requests 
+import os
 
 from configs.configs import obtener_url_desde_config
-
-# Función para grabar audio desde el micrófono y realizar reconocimiento de voz
-def reconocer_voz():
-    recognizer = sr.Recognizer()
-    with sr.Microphone() as source:
-        print("Di algo...")
-        recognizer.adjust_for_ambient_noise(source)
-        audio = recognizer.listen(source)
-
-    try:
-        print("Reconociendo...")
-
-        # Usar reconocimiento de voz de Google
-        texto = recognizer.recognize_google(audio, language='es-ES')
-        print(titulo="Bot", mensaje=f"{texto}")
-
-        return texto
-
-    except sr.UnknownValueError:
-        print("No se pudo entender lo que dijiste")
-        return False
-
-    except sr.RequestError as e:
-        print(f"Error en la solicitud: {e}")
-        return False
-
-# Función para reproducir archivo de audio
-def reproducir_audio(ruta_archivo):
-    pygame.init()
-    pygame.mixer.init()
-    pygame.mixer.music.load(ruta_archivo)
-    pygame.mixer.music.play()
-
-    # Mantener el programa en ejecución hasta que termine la reproducción
-    while pygame.mixer.music.get_busy():
-        pygame.time.Clock().tick(10) 
-
-    pygame.mixer.music.stop()
-    pygame.quit()
+from player.voice import reconocer_voz
+from player.sound import reproducir_audio
 
 # Función para interactuar con el chatbot a través de API
 def api_chatbot(texto: str, url: str, name:str) -> None:
