@@ -14,3 +14,5 @@ def reproducir_audio(ruta_archivo):
     pygame.mixer.music.stop()
     pygame.quit()
 
+if __name__ == '__main__':
+    reproducir_audio()
